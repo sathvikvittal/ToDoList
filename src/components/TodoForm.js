@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
-export const TodoForm = () => {
+export const TodoForm = ({addTodo}) => {
   const [val, setVal] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(val)
+
+    addTodo(val)
+
+    setVal("")
   };
 
   return (
@@ -14,11 +17,12 @@ export const TodoForm = () => {
         type="text"
         placeholder="Add new todo..."
         className="todo-input"
+        value={val}
         onChange={(e) => {
           setVal(e.target.value);
         }}
       />
-      <button type="submit" className="todo-button">
+      <button type="submit" className="todo-btn">
         Add Task
       </button>
     </form>
